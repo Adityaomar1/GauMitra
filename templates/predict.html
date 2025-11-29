@@ -61,16 +61,13 @@
       formData.append('image', file);
 
       try {
-  const res = await fetch('https://your-backend-service.onrender.com/predict', {
-    method: 'POST',
-    body: formData
-  });
+        // 👉 Localhost URL instead of Render URL
+        const res = await fetch('http://127.0.0.1:5000/predict', {
+      const res = await fetch('/predict', {
 
-  // handle response...
-} catch (err) {
-  console.error(err);
-}
-
+          method: 'POST',
+          body: formData
+        });
 
         const data = await res.json();
 
