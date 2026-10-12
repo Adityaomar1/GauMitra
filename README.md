@@ -1,5 +1,96 @@
-# Gau Mitra
-AI-powered Indian Cow Breed Recognition system using Machine Learning and Flask. Includes model, prediction page, and database.
-GauMitra is an AI-powered web application designed to identify Indian cow breeds using deep learning and transfer learning techniques. The system takes an uploaded image of a cow, processes it using a trained machine learning model, and returns the predicted breed along with relevant information retrieved from a small integrated database. The goal of GauMitra is to assist farmers, students, and researchers by providing a fast and accessible breed recognition tool through a simple web interface.
+# GauMitra
 
-Built using Python, Flask, TensorFlow, and OpenCV, GauMitra combines a lightweight backend with an easy-to-use HTML/CSS frontend. The project includes a prediction page, a homepage, and utilities for managing the database.
+GauMitra is a Flask-based cattle breed recognition project. It uses a trained
+ResNet-50 model to identify cattle breeds from images and shows basic breed
+information. It also has a Gemini chatbot for cattle-related questions.
+
+## Features
+
+- Cattle breed prediction from an image
+- Confidence score and breed details
+- SQLite database for breed information
+- Gemini chatbot with optional image input
+
+## Technologies
+
+Python, Flask, PyTorch, Torchvision, Pillow, SQLite, HTML, CSS, JavaScript,
+and Google Gemini API.
+
+## Setup
+
+Use Python 3.11 or later.
+
+```bash
+python -m venv .venv
+```
+
+Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+```
+
+Linux/macOS:
+
+```bash
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
+
+The project needs these files in the main folder:
+
+```text
+final_resnet50_balanced.pth
+cows.db
+```
+
+If the database needs to be created again:
+
+```bash
+python createdb.py
+```
+
+## Gemini API key
+
+Create a `.env` file in the project folder:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+
+The key is only required for the chatbot. Do not share or commit this file.
+
+## Run
+
+```bash
+python app.py
+```
+
+Open the website at:
+
+```text
+http://127.0.0.1:5000/
+```
+
+The prediction page is available at:
+
+```text
+http://127.0.0.1:5000/predict_page
+```
+
+Upload a cattle image and click **Predict**. The chatbot can be opened from
+the home or prediction page.
+
+## Main API routes
+
+- `POST /predict` - predicts a breed from an uploaded image.
+- `POST /chatbot` - sends a text message and optional image to the chatbot.
+
+## Limitations
+
+The project requires the correct model file. Chatbot replies require a valid
+Gemini API key and internet connection. Chatbot advice should not replace a
+veterinarian.
+
+There is currently no license file in the project.
